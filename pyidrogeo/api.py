@@ -5,7 +5,7 @@ import requests
 API_URL = 'https://test.idrogeo.isprambiente.it/api'
 
 # if the env var testing is set to false, use the production api
-if os.environ.get('TESTING', 'false').lower() == 'false':
+if os.environ.get('TESTING', 'true').lower() == 'false':
     API_URL = 'https://idrogeo.isprambiente.it/api'
 
 # msain api urls
@@ -29,7 +29,36 @@ def get_frana(token:str, id:str):
     """Get a frana by id."""
     if not id:
         raise Exception('No id given')
-    response = requests.get(FRANA_API + '/' + str(id), headers={
+    url = FRANA_API + '/' + id
+    response = requests.get(url, headers={
+        'Authorization': 'Bearer ' + token
+    })
+
+    if response.status_code != 200:
+        raise Exception(response.json())
+    
+    return response.json()
+
+def get_frana_revisions(token:str, id:str):
+    """Get the revisions of a frana by its id."""
+    if not id:
+        raise Exception('No id given')
+    url = FRANA_API + '/' + id + '/revisions'
+    response = requests.get(url, headers={
+        'Authorization': 'Bearer ' + token
+    })
+
+    if response.status_code != 200:
+        raise Exception(response.json())
+    
+    return response.json()
+
+def get_frana_last_revision(token:str, id:str):
+    """Get the last revisions of a frana by its id."""
+    if not id:
+        raise Exception('No id given')
+    url = FRANA_API + '/' + id + '/last'
+    response = requests.get(url, headers={
         'Authorization': 'Bearer ' + token
     })
 
@@ -42,26 +71,26 @@ def put_frana(token:str, id:str, body:dict):
     """Modify a frana object by id."""
     if not id:
         raise Exception('No id given')
-    response = requests.put(FRANA_API + '/' + str(id), json=body, headers={
+    response = requests.put(FRANA_API + '/' + id, json=body, headers={
         'Authorization': 'Bearer ' + token
     })
 
     if response.status_code != 200:
         raise Exception(response.json())
     
-def frana_filter_post(token:str, select:[str]=None, order:[str]=None, limit:int=10, offset:int=0, ):
+def frana_filter_post(token:str, select:[str]=None, order:[str]=None, limit:int=10, offset:int=0, search_args:dict=None):
     """Post to the frana filter api and return the response."""
-    body = {
+    params = {
         'limit': limit,
     }
     if offset > 0:
-        body['offset'] = offset
+        params['offset'] = offset
     if select:
-        body['select'] = ",".join(select)
+        params['select'] = ",".join(select)
     if order:
-        body['order'] = ",".join(order)
+        params['order'] = ",".join(order)
 
-    response = requests.post(FRANA_FILTER_API, json=body, headers={
+    response = requests.post(FRANA_FILTER_API, params=params, json=search_args, headers={
         'Authorization': 'Bearer ' + token
     })
     print(response)
