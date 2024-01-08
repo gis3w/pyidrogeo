@@ -12,6 +12,9 @@ if os.environ.get('TESTING', 'true').lower() == 'false':
 LOGIN_API = API_URL + '/user/login'
 FRANA_API = API_URL + '/frana'
 FRANA_FILTER_API = FRANA_API + '/filter'
+REGIONS_API = API_URL + '/iffi/regioni'
+PROVINCES_API = API_URL + '/iffi/province'
+MUNICIPALITIES_API = API_URL + '/iffi/comuni'
 
 def login(username, password):
     """Login to the api and return the token."""
@@ -23,6 +26,7 @@ def login(username, password):
     if response.status_code != 200:
         raise Exception('Login failed')
 
+    # print(response.json())
     return response.json()['token']
 
 def get_frana(token:str, id:str):
@@ -100,4 +104,53 @@ def frana_filter_post(token:str, select:[str]=None, order:[str]=None, limit:int=
 
     return response.json()
     
+def get_regions(token:str, only_id_and_name:bool=True):
+    """Get all the regions."""
+    response = requests.get(REGIONS_API, headers={
+        'Authorization': 'Bearer ' + token
+    })
 
+    if response.status_code != 200:
+        raise Exception(response.json())
+    
+    if only_id_and_name:
+        return [(r['uid'], r['nome']) for r in response.json()]
+    return response.json()
+
+def get_provinces(token:str, region_id:str=None, only_id_and_name_and_region:bool=True):
+    """Get provinces."""
+    
+    url = PROVINCES_API
+    params = {}
+    if region_id:
+        params['cod_reg'] = region_id
+    response = requests.get(url, params=params, headers={
+        'Authorization': 'Bearer ' + token
+    })
+
+    if response.status_code != 200:
+        raise Exception(response.json())
+    
+    if only_id_and_name_and_region:
+        return [(r['uid'], r['nome'], r['cod_reg']) for r in response.json()]
+    return response.json()
+
+def get_municipalities(token:str, region_id:str=None, province_id:str=None, only_id_and_name:bool=True):
+    """Get municipalities."""
+    
+    url = MUNICIPALITIES_API
+    params = {}
+    if province_id:
+        params['cod_prov'] = province_id
+    if region_id:
+        params['cod_reg'] = region_id
+    response = requests.get(url, params=params, headers={
+        'Authorization': 'Bearer ' + token
+    })
+
+    if response.status_code != 200:
+        raise Exception(response.json())
+    
+    if only_id_and_name:
+        return [(r['uid'], r['nome']) for r in response.json()]
+    return response.json()
