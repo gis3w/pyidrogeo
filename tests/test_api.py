@@ -1,5 +1,6 @@
 import unittest
 from pyidrogeo.api import login, frana_filter_post, get_frana, put_frana, get_frana_revisions, get_frana_last_revision,get_regions, get_provinces, get_municipalities
+from pyidrogeo.models import Frana
                         
 
 
@@ -26,12 +27,27 @@ class TestLogin(unittest.TestCase):
     def test_frana_get(self):
         if not self.runtests:
             return
+        
+        id = '0010000400'
+        response = get_frana(self.token, id)
+        # print(response)
+
+        frana = Frana(response)
+        
+        self.assertIsInstance(response, dict)
+        self.assertEqual(response['id_frana'], frana.get_frana_id())
+        self.assertEqual(frana.get_point(), [6.65705768922446, 45.108196410921])
+        self.assertIsNone(frana.get_toponimo())
+    
+    def test_frana_with_geom_get(self):
+        if not self.runtests:
+            return
         # get the token from the class
         token = self.token
         
-        id = '0010000400'
+        id = '0400011500'
         response = get_frana(token, id)
-        
+
         self.assertIsInstance(response, dict)
         self.assertEqual(response['id_frana'], id)
 
@@ -88,15 +104,15 @@ class TestLogin(unittest.TestCase):
             "tipo_movimento":"eq.2"
         }
         # a selection of fields
-        fields = ['id', 'id_frana', 'active', 'created', 'provincia']
+        # fields = ['id', 'id_frana', 'active', 'created', 'provincia']
         # or all available fields
-        fields = ['id', 'active', 'created', 'modified', 'extent', 'stato', 'user', 'modified_by', 'macroregione', 'regione', 
-                'provincia', 'comune', 'tipo_movimento', 'id_frana']
+        # fields = ['id', 'active', 'created', 'modified', 'extent', 'stato', 'user', 'modified_by', 'macroregione', 'regione', 
+        #         'provincia', 'comune', 'tipo_movimento', 'id_frana']
         #! QUESTIONS:
-        #! dove sono tutti gli altri campi che si possono settare della frana?
+        #! dove sono tutti gli altri campi che si possono settare della frana? Solo nel get diretto della frana?
         
         # or all default fields (same as above)
-        # fields = []
+        fields = []
 
         response = frana_filter_post(token, select=fields, limit=3, search_args=search_args)
         
