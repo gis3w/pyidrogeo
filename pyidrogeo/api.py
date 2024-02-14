@@ -1,5 +1,6 @@
 import os
 import requests
+from typing import List
 
 # main api constants
 API_URL = 'https://test.idrogeo.isprambiente.it/api'
@@ -18,6 +19,7 @@ MUNICIPALITIES_API = API_URL + '/iffi/comuni'
 
 def login(username, password):
     """Login to the api and return the token."""
+    print(f"Login to {API_URL} with {username}")
     response = requests.post(LOGIN_API, json={
         'username': username,
         'password': password
@@ -30,7 +32,7 @@ def login(username, password):
     return response.json()['token']
 
 def get_frana(token:str, id:str):
-    """Get a frana by id."""
+    """Get a validated frana by id."""
     if not id:
         raise Exception('No id given')
     url = FRANA_API + '/' + id
@@ -82,7 +84,7 @@ def put_frana(token:str, id:str, body:dict):
     if response.status_code != 200:
         raise Exception(response.json())
     
-def frana_filter_post(token:str, select:[str]=None, order:[str]=None, limit:int=10, offset:int=0, search_args:dict=None):
+def frana_filter_post(token:str, select:List[str]=None, order:List[str]=None, limit:int=10, offset:int=0, search_args:dict=None):
     """Post to the frana filter api and return the response."""
     params = {
         'limit': limit,
