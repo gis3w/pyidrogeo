@@ -36,7 +36,7 @@ class IdrogeoApiUrls:
     
     def get_frana_api(self):
         return self._instance.API_URL + '/frana'
-    
+ 
     def get_frana_filter_api(self):
         return self._instance.get_frana_api() + '/filter'
     
@@ -118,6 +118,18 @@ def put_frana(token:str, id:str, body:dict):
 
     if response.status_code != 200:
         raise Exception(response.json())
+
+def post_frana(token:str, body:dict):
+    """Add a new frana object."""
+    response = requests.post(IdrogeoApiUrls().get_frana_api(), json=body, headers={
+        'Authorization': 'Bearer ' + token
+    })
+
+    if response.status_code != 200 and response.status_code != 201:
+        raise Exception(response.json())
+    
+    return response.json()
+
     
 def frana_filter_post(token:str, select:List[str]=None, order:List[str]=None, limit:int=10, offset:int=0, search_args:dict=None):
     """Post to the frana filter api and return the response."""
