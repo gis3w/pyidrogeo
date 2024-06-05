@@ -2,6 +2,10 @@ import os
 import requests
 from typing import List
 
+import logging
+
+logger = logging.getLogger(__name__)
+
 
 class IdrogeoApiUrls:
     """Singleton class that holds the API URL."""
@@ -11,19 +15,23 @@ class IdrogeoApiUrls:
         if not cls._instance:
             cls._instance = super(IdrogeoApiUrls, cls).__new__(cls, *args, **kwargs)
             
-            # by default the test site is used
-            cls._instance.API_URL = 'https://test.idrogeo.isprambiente.it/api'
-            # if the env var testing is set to false, use the production api
-            if os.environ.get('TESTING', 'true').lower() == 'false':
+            if os.environ.get('TESTING', 'true').lower() == 'true':
+                # by default the test site is used
+                cls._instance.API_URL = 'https://test.idrogeo.isprambiente.it/api'
+                logger.debug(f"Default use TEST API URL: {cls._instance.API_URL}")
+            else:
                 cls._instance.API_URL = 'https://idrogeo.isprambiente.it/api'
+                logger.debug(f"Setting API URL from environmental variable: {cls._instance.API_URL}")
 
         return cls._instance
     
     def use_test_api(self):
         self._instance.API_URL = 'https://test.idrogeo.isprambiente.it/api'
+        logger.debug(f"User forced use of TEST API URL: {self._instance.API_URL}")
 
     def use_production_api(self):
         self._instance.API_URL = 'https://idrogeo.isprambiente.it/api'
+        logger.debug(f"User forced use of PRODUCTION API URL: {self._instance.API_URL}")
     
     def set_api_url(self, url:str):
         self._instance.API_URL = url
@@ -49,8 +57,6 @@ class IdrogeoApiUrls:
     def get_municipalities_api(self):
         return self._instance.API_URL + '/iffi/comuni'
     
-
-
 
 def login(username, password):
     """Login to the api and return the token."""
