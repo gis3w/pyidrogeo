@@ -10,14 +10,20 @@ class IdrogeoApiUrls:
     def __new__(cls, *args, **kwargs):
         if not cls._instance:
             cls._instance = super(IdrogeoApiUrls, cls).__new__(cls, *args, **kwargs)
-            # main api constants
+            
+            # by default the test site is used
             cls._instance.API_URL = 'https://test.idrogeo.isprambiente.it/api'
-
             # if the env var testing is set to false, use the production api
             if os.environ.get('TESTING', 'true').lower() == 'false':
                 cls._instance.API_URL = 'https://idrogeo.isprambiente.it/api'
 
         return cls._instance
+    
+    def use_test_api(self):
+        self._instance.API_URL = 'https://test.idrogeo.isprambiente.it/api'
+
+    def use_production_api(self):
+        self._instance.API_URL = 'https://idrogeo.isprambiente.it/api'
     
     def set_api_url(self, url:str):
         self._instance.API_URL = url
