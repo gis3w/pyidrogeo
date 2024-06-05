@@ -1,22 +1,22 @@
 import json
 
 frana = {
-    "id": "0250e460-1139-11ea-9245-0242ac120003",
+    "id": "f103b64c-1138-11ea-9245-0242ac120003",
     "active": True,
-    "created": "2017-07-18T00:00:00+00:00",
-    "modified": "2017-07-18T00:00:00+00:00",
+    "created": "2002-05-31T00:00:00+00:00",
+    "modified": "2002-05-31T00:00:00+00:00",
     "point": [
-        11.9613385698521,
-        44.1030451933667
+        8.97430941698364,
+        44.7935279431226
     ],
     "extent": [
         [
-            11.9611459837326,
-            44.0993867916258
+            8.97329680534511,
+            44.7916592707687
         ],
         [
-            11.9660142094315,
-            44.1032249133308
+            8.9772117770521,
+            44.7936394201815
         ]
     ],
     "stato": "importato",
@@ -25,338 +25,174 @@ frana = {
     "revision_validata": None,
     "revision_bozza": None,
     "user": {
-        "id": "fbf18866-106d-11ea-89de-0242ac120003",
-        "email": "regione.emilia_romagna@isprambiente.it",
-        "lastname": "emilia_romagna",
+        "id": "fbf174d4-106d-11ea-89de-0242ac120003",
+        "email": "regione.piemonte@isprambiente.it",
+        "lastname": "piemonte",
         "firstname": "regione"
     },
-    "compilatore_orig": "Servizio Geologico, Sismico e dei Suoli",
+    "compilatore_orig": "Torazza",
     "modified_by": {
-        "id": "fbf18866-106d-11ea-89de-0242ac120003",
-        "email": "regione.emilia_romagna@isprambiente.it",
-        "lastname": "emilia_romagna",
+        "id": "fbf174d4-106d-11ea-89de-0242ac120003",
+        "email": "regione.piemonte@isprambiente.it",
+        "lastname": "piemonte",
         "firstname": "regione"
     },
-    "istituzione": "Regione Emilia-Romagna",
+    "istituzione": "Provincia di Alessandria",
     "istituzione_cf": None,
-    "macroregione": 2,
-    "regione": 8,
-    "provincia": 40,
-    "comune": 40032,
-    "macroregione_orig": 2,
-    "regione_orig": 8,
-    "provincia_orig": 40,
-    "comune_orig": 40032,
+    "macroregione": 1,
+    "regione": 1,
+    "provincia": 6,
+    "comune": 6010,
+    "macroregione_orig": 1,
+    "regione_orig": 1,
+    "provincia_orig": 6,
+    "comune_orig": 6010,
     "autorita_distretto": 2,
-    "geom": "SRID=32632;POINT(737014.8349646804 4887582.634893319)",
-    "toponimo": None,
+    "geom": "SRID=32632;POINT(497967.93019754795 4960014.709151358)",
+    "toponimo": "Case Borella",
     "posizione_punto": None,
     "accuratezza_posizione": None,
-    "descrizione": "a1b - Deposito di frana attiva per scivolamento. colamenti lenti di terra e detrito. Creep.",
-    "tipo_movimento": 2,
+    "descrizione": None,
+    "tipo_movimento": 7,
     "data_certa": None,
     "compila_danni": True,
-    "personesn": False,
-    "feritisn": False,
-    "evacuatisn": False,
-    "morti": 0,
-    "feriti": 0,
+    "personesn": None,
+    "feritisn": None,
+    "evacuatisn": None,
+    "morti": None,
+    "feriti": None,
     "dispersi": None,
-    "evacuati": 0,
+    "evacuati": None,
     "gruppi_elementi_danni": [
-        "8",
-        "1",
-        "12",
-        "2",
-        "3",
-        "4",
-        "9"
+        "0"
     ],
-    "elementi_danni": [
+    "elementi_danni": None,
+    "danni_acque": None,
+    "files": None,
+    "links": [
         {
-            "grado": "5",
-            "codice": "56"
-        },
-        {
-            "grado": "3",
-            "codice": "23"
-        },
-        {
-            "grado": "4",
+            "url": "http://webgis.arpa.piemonte.it/geodissesto/sifrap/sifrap_ii_liv_scheda.php?cod_frana=006-50429-00",
             "codice": "1"
-        },
-        {
-            "grado": "3",
-            "codice": "58"
-        },
-        {
-            "grado": "1",
-            "codice": "10"
-        },
-        {
-            "grado": "5",
-            "codice": "55"
-        },
-        {
-            "grado": "4",
-            "codice": "11"
         }
     ],
-    "danni_acque": {
-        "codice": "1",
-        "corso_acqua": "Fosso di Predappio"
-    },
-    "files": [
-        {
-            "name": "0400011500001.jpg",
-            "path": "foto",
-            "size": 149444,
-            "type": "image/jpeg",
-            "mtime": "2004-10-13T13:41:20",
-            "url": "https://idrogeo.isprambiente.it/api/media/foto/0400011500001.jpg"
-        },
-        {
-            "name": "0400011500002.pdf",
-            "path": "pdf_frane",
-            "size": 432268,
-            "type": "application/pdf",
-            "mtime": "2005-11-21T12:41:38",
-            "url": "https://idrogeo.isprambiente.it/api/media/pdf_frane/0400011500002.pdf"
-        }
-    ],
-    "links": None,
     "segnalazione_orig": None,
-    "sigla": "PredappioAlta2",
+    "sigla": "Avolasca 58",
     "data_sopralluogo": None,
-    "ex_autorita_bacino": 25,
+    "ex_autorita_bacino": 1,
     "geom_linestring": None,
-    "geom_polygon": "SRID=32632;MULTIPOLYGON(((737239.2276947005 4887495.606625182,737245.0680708077 4887495.438623525,737261.0863802505 4887492.817238139,737274.7313909 4887490.849511893,737284.0276820386 4887483.2912276145,737290.3033077874 4887478.536898681,737298.3083853783 4887472.487155652,737306.7446061829 4887466.435965889,737310.0142472818 4887462.686552441,737312.5824648193 4887459.741477492,737313.2171871965 4887448.107553581,737314.0723948296 4887439.91520381,737313.4130286002 4887427.424325879,737308.8445002874 4887408.907286182,737307.6257588144 4887404.603550094,737308.1880673476 4887396.96847135,737310.0734821823 4887389.156295988,737314.6682710003 4887383.214112992,737322.5110483016 4887372.957964037,737330.5828163499 4887367.497028932,737333.4026842369 4887363.508644299,737325.8102196978 4887360.509418972,737320.4346973323 4887345.861743929,737323.0964754093 4887329.858126056,737332.4453223225 4887303.169910099,737345.8068730186 4887269.801198075,737352.4884200478 4887253.782261479,737376.5916190619 4887240.369867715,737400.6939274597 4887225.621168205,737402.6686325612 4887218.908696594,737402.6215574769 4887218.874200122,737397.3928830468 4887208.156039952,737386.3182996928 4887198.247477313,737376.4332179453 4887193.865641982,737364.9045844356 4887188.743526639,737359.9730277606 4887188.186083756,737347.9278588159 4887194.407878622,737342.8792456804 4887199.475039785,737339.8727873309 4887203.391947543,737333.1746614074 4887210.866216055,737323.1887428907 4887218.351376315,737308.2244772445 4887235.0829021735,737293.6207315375 4887255.009545875,737277.5749472246 4887264.6409179075,737245.140847064 4887289.403987674,737233.0218081804 4887300.796058907,737214.4984376174 4887322.495939069,737193.8278974105 4887338.87430498,737183.8487073926 4887348.475718038,737169.9540258896 4887364.480953068,737160.5170475305 4887375.100237836,737151.5404739202 4887386.713510985,737148.4908311842 4887390.652566092,737130.6893326212 4887413.530353885,737110.6519224618 4887436.627479624,737073.2341935836 4887463.298773668,737063.8817864497 4887468.17989279,737052.7466630525 4887472.175422171,737044.7329065952 4887480.604240492,737041.6264300834 4887491.686393901,737044.3144257052 4887501.437538027,737048.3351385037 4887508.083979222,737050.1259519106 4887515.618988622,737048.7970335751 4887523.598622106,737044.3530419338 4887532.023352401,737036.3400092222 4887541.338112559,737018.0803752798 4887552.4386324715,737006.0557078277 4887558.6519406075,737002.0548213031 4887566.19474615,736999.4019483941 4887582.598733727,737000.7521656917 4887595.452651519,737006.9999689562 4887600.767123595,737013.3049797802 4887601.562522107,737024.3826583228 4887602.966845589,737039.0913833703 4887601.180743415,737054.6877572573 4887598.060051868,737070.2815333861 4887592.725498952,737083.6472872131 4887586.060445372,737099.6878724011 4887580.270472997,737108.418179908 4887576.0627858,737112.6111218131 4887574.042681699,737125.977134946 4887567.8111349465,737138.4489867026 4887558.033939606,737154.4820996356 4887543.81265999,737170.0730695974 4887531.591508921,737185.662306979 4887519.589137332,737201.2585980466 4887511.129912397,737215.9641690576 4887504.006255114,737228.8880631711 4887499.093607567,737235.6859168526 4887496.907547043,737239.2276947005 4887495.606625182)))",
-    "materiale_1ord": 0,
+    "geom_polygon": "SRID=32632;MULTIPOLYGON(((498094.11681542604 4959954.270044366,498102.32592069736 4959943.710687319,498112.615180964 4959934.846565801,498134.9144308646 4959920.253281873,498152.15135203494 4959912.052219974,498166.5707517864 4959901.0964696705,498182.851150042 4959888.071824298,498191.16175706504 4959875.463375277,498197.4565138629 4959857.205806782,498195.9263628981 4959843.489772699,498192.6558590688 4959831.035233413,498188.27498565335 4959823.020770672,498183.5981669233 4959819.096620005,498180.6841168799 4959813.868080636,498179.0134243621 4959808.040798959,498169.9139931544 4959807.070254806,498155.7906706179 4959809.9523012405,498142.239968059 4959815.763766415,498131.36157059897 4959816.818345959,498118.46379509405 4959821.325191748,498099.9102294301 4959822.488801905,498085.1612551715 4959822.48131932,498070.9893721648 4959821.254242281,498057.4879558408 4959818.840888178,498044.1952667248 4959814.539911011,498034.7082834192 4959811.139288132,498022.4224873522 4959812.47057223,498013.2351194177 4959810.553106804,498005.0325296375 4959812.4367867,497994.3207136808 4959816.328465478,497982.76825684047 4959820.248388022,497970.201885306 4959822.244837275,497964.19150665874 4959825.223070862,497957.01505513274 4959833.823221409,497948.3904081103 4959841.391955502,497942.6040334201 4959844.62744817,497932.9693441542 4959848.9710733,497925.91707607603 4959855.714892735,497917.54454959737 4959865.327855545,497910.31780220714 4959870.937007304,497900.6608330171 4959877.257062961,497896.62536694703 4959884.14957632,497894.0198378343 4959898.024808833,497890.8004481384 4959903.650900858,497889.4325549992 4959910.742609473,497887.8056702351 4959926.031126221,497888.8645929078 4959943.686756788,497895.18274050567 4959953.539293966,497898.0395224322 4959957.453564195,497898.28974332317 4959964.656103042,497897.97673992167 4959971.882133401,497896.33706623164 4959982.2841573395,497899.3186561658 4959992.941178198,497906.368765255 4960003.490829533,497912.3360782222 4960010.996710959,497932.5554573425 4960024.48020924,497950.1645942195 4960027.098028286,497962.5913405229 4960026.967421105,497974.47380954097 4960023.0218074,497997.6397312859 4960018.422402124,498017.7791465631 4960017.477790741,498032.3141623015 4960014.729957642,498042.4529957219 4960009.373094532,498048.64306233375 4960003.27735692,498058.5818147343 4959995.949778304,498074.03391535336 4959987.665311594,498086.165509617 4959977.821303797,498090.18048250786 4959967.7435898725,498094.11681542604 4959954.270044366)))",
+    "materiale_1ord": None,
     "altri_fenomeni": None,
     "stato_attivita_1liv": 100,
     "metodo": [
         "2",
-        "4"
+        "1"
     ],
     "data_incerta_min": None,
     "data_incerta_max": None,
     "datazione_attendibile": None,
-    "fonti_datazione": [
-        "testimonianze",
-        "archivi",
-        "cartografia"
-    ],
+    "fonti_datazione": None,
     "note_danni": None,
     "costo_beni": None,
     "costo_attivita": None,
     "costo_totale": None,
-    "compila_rischio": True,
-    "persone_rischiosn": False,
-    "persone_rischio": 0,
+    "compila_rischio": None,
+    "persone_rischiosn": None,
+    "persone_rischio": None,
     "persone_rischio_indirettosn": None,
     "persone_rischio_indiretto": None,
-    "ed_privati_rischiosn": True,
-    "ed_privati_rischio": 5,
-    "ed_pubblici_rischiosn": False,
-    "ed_pubblici_rischio": 0,
+    "ed_privati_rischiosn": None,
+    "ed_privati_rischio": None,
+    "ed_pubblici_rischiosn": None,
+    "ed_pubblici_rischio": None,
     "infrastrutture_comunicazione_rischiosn": None,
     "infrastrutture_comunicazione_rischio": None,
     "altro_rischiosn": None,
     "altro_rischio": None,
     "note_rischio": None,
     "volume": None,
-    "larghezza": 174,
-    "lunghezza": 575,
-    "cause": [
-        {
-            "codice": "12",
-            "innescante": False
-        },
-        {
-            "codice": "11",
-            "innescante": False
-        },
-        {
-            "codice": "7",
-            "innescante": False
-        },
-        {
-            "codice": "1",
-            "innescante": False
-        },
-        {
-            "codice": "28",
-            "innescante": False
-        }
-    ],
-    "compila_interventi": True,
-    "interventi": [
-        "10",
-        "15",
-        "28",
-        "5",
-        "6"
-    ],
+    "larghezza": None,
+    "lunghezza": None,
+    "cause": None,
+    "compila_interventi": False,
+    "interventi": None,
     "note_interventi": None,
     "interventi_rendis": None,
-    "ad_le_na": "Legge 267/98 PSAI",
+    "ad_le_na": None,
     "numero_ord": None,
     "descrizione_ord": None,
-    "id_frana": "0400011500",
-    "toponimo_ctr": "Predappio",
+    "id_frana": "0065042900",
+    "toponimo_ctr": "Garbagna",
     "scala_ctr": "10000",
-    "numero_ctr": "254080",
-    "livello": 3,
-    "movimento_1ord": 4,
-    "movimento_2ord": 3,
-    "velocita_1ord": 0,
-    "velocita_2ord": 0,
-    "materiale_2ord": 0,
-    "acqua_1ord": 0,
-    "acqua_2ord": 0,
-    "stato_attivita_2liv": 103,
-    "data_oss": "20070901",
+    "numero_ctr": "195040",
+    "livello": 1,
+    "movimento_1ord": None,
+    "movimento_2ord": None,
+    "velocita_1ord": None,
+    "velocita_2ord": None,
+    "materiale_2ord": None,
+    "acqua_1ord": None,
+    "acqua_2ord": None,
+    "stato_attivita_2liv": None,
+    "data_oss": "2014-02",
     "data_oss_certa": None,
     "data_oss_incerta_min": None,
     "data_oss_incerta_max": None,
-    "distribuzione": 1,
-    "stile": 2,
-    "voli": None,
+    "distribuzione": None,
+    "stile": None,
+    "voli": [
+        {
+            "id": "0101",
+            "data": "1992",
+            "nome": "Volo IGM",
+            "scala": "33000",
+            "num_foto": "77",
+            "met_valut": "3",
+            "num_stric": "2"
+        }
+    ],
     "eta_radiometrica_anni_bp": None,
     "eta_radiometrica_precisione": None,
-    "attivazioni": [
-        {
-            "id": "806",
-            "data": "2003",
-            "attendibile": True
-        },
-        {
-            "id": "805",
-            "data": "2000",
-            "attendibile": True
-        },
-        {
-            "id": "804",
-            "data": "1990",
-            "attendibile": True
-        },
-        {
-            "id": "803",
-            "data": "1934",
-            "attendibile": True
-        },
-        {
-            "id": "802",
-            "data": "1923",
-            "attendibile": True
-        },
-        {
-            "id": "801",
-            "data": "1904",
-            "attendibile": True
-        }
-    ],
+    "attivazioni": None,
     "tipi_danno": None,
-    "edificisn": True,
-    "ed_privatisn": False,
-    "ed_privati": 0,
-    "ed_pubblicisn": False,
-    "ed_pubblici": 0,
-    "quota_corona": 291,
-    "quota_unghia": 173,
-    "dislivello": 118,
-    "beta": 11.59708,
-    "azimut": 145,
+    "edificisn": None,
+    "ed_privatisn": None,
+    "ed_privati": None,
+    "ed_pubblicisn": None,
+    "ed_pubblici": None,
+    "quota_corona": None,
+    "quota_unghia": None,
+    "dislivello": None,
+    "beta": None,
+    "azimut": None,
     "area": None,
-    "area_calc": 54802.82541322057,
+    "area_calc": 45931.70252403349,
     "dr": None,
-    "cod_pos_testata": 3,
-    "cod_pos_unghia": 5,
-    "cod_esp_ver": 4,
-    "uso_suolo": 11,
-    "unita_geologiche": [
-        {
-            "unita": {
-                "sigla": "FCO",
-                "unita": "88",
-                "nome_unita": "FORMAZIONE A COLOMBACCI"
-            },
-            "assetto": "0",
-            "litologia": "16",
-            "struttura": "8",
-            "spaziatura": "1",
-            "descrizione": "FCOb1. Membro conglomeratico frana extraformaz.",
-            "litotecnica": "1",
-            "degradazione": "3"
-        },
-        {
-            "unita": {
-                "sigla": "FCO",
-                "unita": "88",
-                "nome_unita": "FORMAZIONE A COLOMBACCI"
-            },
-            "assetto": "9",
-            "litologia": "6",
-            "struttura": "2",
-            "immersione": "135",
-            "spaziatura": "3",
-            "descrizione": "membro pelitico. Marne argillose e subordinate arenarie. A/P<1.",
-            "litotecnica": "1",
-            "degradazione": "2",
-            "inclinazione": "15"
-        }
-    ],
-    "acque_superficiali": [
-        "ruscell_diffuso",
-        "ruscell_concentrato"
-    ],
-    "sorgente": 1,
+    "cod_pos_testata": None,
+    "cod_pos_unghia": None,
+    "cod_esp_ver": None,
+    "uso_suolo": None,
+    "unita_geologiche": None,
+    "acque_superficiali": None,
+    "sorgente": None,
     "n_sorgente": None,
-    "falda": 2,
+    "falda": None,
     "falda_prof": None,
-    "segni_precursori": [
-        "1"
-    ],
-    "indagini": [
-        "2"
-    ],
+    "segni_precursori": None,
+    "indagini": None,
     "costo_indagini": None,
     "interferometria_sar": None,
-    "monitoraggio": None,
-    "sistemi_monitoraggio": None,
-    "costo_eff_interventi": None,
-    "archivio": [
-        "2",
-        "5"
+    "monitoraggio": [
+        "15",
+        "16"
     ],
-    "carg": None,
-    "bibliografia": [
-        {
-            "autori": "SPDS",
-            "titolo": "Interventi sul territorio",
-            "anno_pubblicazione": "2001"
-        },
-        {
-            "autori": "Zani O.",
-            "titolo": "Piano stralcio",
-            "anno_pubblicazione": "2001"
-        },
-        {
-            "autori": "Antoniazzi A.",
-            "titolo": "Comunità Montana",
-            "anno_pubblicazione": "1987"
-        },
-        {
-            "autori": "Raggi B.",
-            "titolo": "PSAI",
-            "anno_pubblicazione": "1999"
-        },
-        {
-            "autori": "Comune di Predappio",
-            "titolo": "PRG",
-            "anno_pubblicazione": "2000"
-        }
-    ]
+    "sistemi_monitoraggio": [
+        "1AVOA"
+    ],
+    "costo_eff_interventi": None,
+    "archivio": None,
+    "carg": 2,
+    "bibliografia": None
 }
 
 class User:

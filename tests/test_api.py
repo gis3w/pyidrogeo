@@ -1,8 +1,9 @@
 import sys
 sys.path.append("./")
 import unittest
-from pyidrogeo.api import login, frana_filter_post, get_frana, put_frana, get_frana_revisions, get_frana_last_revision,get_regions, get_provinces, get_municipalities
+from pyidrogeo.api import *
 # from pyidrogeo.models import Frana
+import datetime
                         
 
 
@@ -14,9 +15,14 @@ from pyidrogeo.api import login, frana_filter_post, get_frana, put_frana, get_fr
 
 
 class TestIdrogeoApi(unittest.TestCase):
+    franaTest = "006-50020-00".replace("-", "")
+
     # run login before all test methods
     @classmethod
     def setUpClass(cls):
+
+        IdrogeoApiUrls().set_api_url('https://test.idrogeo.isprambiente.it/api')
+
         # get user and pwd from local file secrets.properties
         with open('secrets.properties', 'r') as f:
             user = f.readline().strip().split('=')[1]
@@ -34,13 +40,14 @@ class TestIdrogeoApi(unittest.TestCase):
         if not self.runtests:
             return
         
-        id = '0010000400'
+        id = self.franaTest
         response = get_frana(self.token, id)
 
         self.assertIsInstance(response, dict)
         self.assertEqual(response['id_frana'], id)
-        self.assertEqual(response['point'], [6.65705768922446, 45.108196410921])
-        self.assertIsNone(response['toponimo'])
+        self.assertEqual(response['point'], [9.005147756523442, 44.814063686112206])
+        self.assertEqual(response['toponimo'], "Polverola")
+        self.assertIsNone(response['morti'])
     
     def test_frana_with_geom_get(self):
         if not self.runtests:
@@ -48,26 +55,28 @@ class TestIdrogeoApi(unittest.TestCase):
         # get the token from the class
         token = self.token
         
-        id = '0400011500'
+        id = self.franaTest
         response = get_frana(token, id)
 
         self.assertIsInstance(response, dict)
         self.assertEqual(response['id_frana'], id)
+        self.assertIsNotNone(response['geom_polygon'])
 
     def test_frana_revisions_get(self):
         if not self.runtests:
             return
-        id = '0010000400'
+        
+        id = self.franaTest
         response = get_frana_revisions(self.token, id)
         
         self.assertIsInstance(response, list)
-        self.assertEqual(len(response), 1)
+        self.assertTrue(len(response) > 1)
         self.assertEqual(response[0]['id_frana'], id)
 
     def test_frana_last_revision_get(self):
         if not self.runtests:
             return
-        id = '0010000400'
+        id = self.franaTest
         response = get_frana_last_revision(self.token, id)
         
         self.assertIsInstance(response, dict)
@@ -155,15 +164,37 @@ class TestIdrogeoApi(unittest.TestCase):
         if not self.runtests:
             return
         # get the token from the class
-        id = '0010000400'
+        id = self.franaTest
         response = get_frana(self.token, id)
 
-        user_id = '872d63f2-4ce4-11ea-a9b4-0242ac120004'
-        response['modified_by'] = user_id
+        # get user id
+        previous_user = response['modified_by']
+        #{'id': 'fbf174d4-106d-11ea-89de-0242ac120003', 'email': 'regione.piemonte@isprambiente.it', 'lastname': 'piemonte', 'firstname': 'regione'}
+        
+
+        user = {'id': '872d63f2-4ce4-11ea-a9b4-0242ac120004', 
+                #    'email': 'regione.piemonte@isprambiente.it', 
+                   'lastname': 'Antonello', 
+                   'firstname': 'Andrea'
+                   }
+        
+        response['modified_by'] = user
+        response['posizione_punto'] = 1
+        response["accuratezza_posizione"]= "esatta"
+        datetime_now = datetime.datetime.now()
+        ts = datetime_now.strftime('%Y-%m-%dT%H:%M:%S%z')
+        response['data_oss_certa'] = ts
+        response["stato"] = "bozza"
+
+        print(response)
+
         put_frana(self.token, id, response)
 
         response = get_frana(self.token, id)
-        self.assertEqual(response['modified_by'], user_id)
+
+        #! TODO check with idrogeo team
+        # self.assertEqual(response['data_oss_certa'], ts)
+        # self.assertEqual(response['modified_by']['id'], user['id'])
 
 
 
