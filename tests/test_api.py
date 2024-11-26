@@ -41,8 +41,8 @@ class TestIdrogeoApi(unittest.TestCase):
             return
         
         id = self.franaTest
-        response = get_frana(self.token, id)
-
+        code, response = get_frana(self.token, id)
+        self.assertEqual(code, 200)
         self.assertIsInstance(response, dict)
         self.assertEqual(response['id_frana'], id)
         self.assertEqual(response['point'], [9.005147756523442, 44.814063686112206])
@@ -56,8 +56,9 @@ class TestIdrogeoApi(unittest.TestCase):
         token = self.token
         
         id = self.franaTest
-        response = get_frana(token, id)
+        code, response = get_frana(token, id)
 
+        self.assertEqual(code, 200)
         self.assertIsInstance(response, dict)
         self.assertEqual(response['id_frana'], id)
         self.assertIsNotNone(response['geom_polygon'])
@@ -67,8 +68,9 @@ class TestIdrogeoApi(unittest.TestCase):
             return
         
         id = self.franaTest
-        response = get_frana_revisions(self.token, id)
+        code, response = get_frana_revisions(self.token, id)
         
+        self.assertEqual(code, 200)
         self.assertIsInstance(response, list)
         self.assertTrue(len(response) > 1)
         self.assertEqual(response[0]['id_frana'], id)
@@ -77,8 +79,9 @@ class TestIdrogeoApi(unittest.TestCase):
         if not self.runtests:
             return
         id = self.franaTest
-        response = get_frana_last_revision(self.token, id)
+        code, response = get_frana_last_revision(self.token, id)
         
+        self.assertEqual(code, 200)
         self.assertIsInstance(response, dict)
         self.assertEqual(response['id_frana'], id)
 
@@ -101,8 +104,9 @@ class TestIdrogeoApi(unittest.TestCase):
         # or all default fields (same as above)
         # fields = []
 
-        response = frana_filter_post(token, select=fields, limit=3, search_args=search_args)
+        code, response = frana_filter_post(token, select=fields, limit=3, search_args=search_args)
         
+        self.assertEqual(code, 200)
         self.assertIsInstance(response, list)
         if len(fields) > 0:
             self.assertEqual(len(response[0]), len(fields)+1) # why the heck is 'cause' added?
@@ -165,8 +169,9 @@ class TestIdrogeoApi(unittest.TestCase):
             return
         # get the token from the class
         id = self.franaTest
-        response = get_frana(self.token, id)
+        code, response = get_frana(self.token, id)
 
+        self.assertEqual(code, 200)
         # get user id
         previous_user = response['modified_by']
         #{'id': 'fbf174d4-106d-11ea-89de-0242ac120003', 'email': 'regione.piemonte@isprambiente.it', 'lastname': 'piemonte', 'firstname': 'regione'}
@@ -188,9 +193,12 @@ class TestIdrogeoApi(unittest.TestCase):
 
         print(response)
 
-        put_frana(self.token, id, response)
+        code, response = put_frana(self.token, id, response)
+        self.assertEqual(code, 200)
 
-        response = get_frana(self.token, id)
+        code, response = get_frana(self.token, id)
+        self.assertEqual(code, 200)
+
 
         #! TODO check with idrogeo team
         # self.assertEqual(response['data_oss_certa'], ts)

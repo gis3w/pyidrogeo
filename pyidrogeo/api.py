@@ -72,8 +72,13 @@ def login(username, password):
     # print(response.json())
     return response.json()['token']
 
-def get_frana(token:str, id:str):
-    """Get a validated frana by id."""
+def get_frana(token:str, id:str) -> tuple[bool, dict]:
+    """Get a validated frana by id.
+    
+    Returns:
+        bool: True if no error occurred.
+        dict: The frana object.
+    """
     if not id:
         raise Exception('No id given')
     url = IdrogeoApiUrls().get_frana_api() + '/' + id
@@ -81,13 +86,15 @@ def get_frana(token:str, id:str):
         'Authorization': 'Bearer ' + token
     })
 
-    if response.status_code != 200:
-        raise Exception(response.json())
-    
-    return response.json()
+    return (response.status_code, response.json())
 
-def get_frana_revisions(token:str, id:str):
-    """Get the revisions of a frana by its id."""
+def get_frana_revisions(token:str, id:str) -> tuple[bool, list]:
+    """Get the revisions of a frana by its id.
+    
+    Returns:
+        bool: True if no error occurred.
+        dict: The revisions list.
+    """
     if not id:
         raise Exception('No id given')
     url = IdrogeoApiUrls().get_frana_api() + '/' + id + '/revisions'
@@ -95,13 +102,15 @@ def get_frana_revisions(token:str, id:str):
         'Authorization': 'Bearer ' + token
     })
 
-    if response.status_code != 200:
-        raise Exception(response.json())
-    
-    return response.json()
+    return (response.status_code, response.json())
 
-def get_frana_last_revision(token:str, id:str):
-    """Get the last revisions of a frana by its id."""
+def get_frana_last_revision(token:str, id:str) -> tuple[bool, dict]:
+    """Get the last revisions of a frana by its id.
+    
+    Returns:
+        bool: True if no error occurred.
+        dict: The last revision.
+    """
     if not id:
         raise Exception('No id given')
     url = IdrogeoApiUrls().get_frana_api() + '/' + id + '/last'
@@ -109,36 +118,43 @@ def get_frana_last_revision(token:str, id:str):
         'Authorization': 'Bearer ' + token
     })
 
-    if response.status_code != 200:
-        raise Exception(response.json())
-    
-    return response.json()
+    return (response.status_code, response.json())
 
-def put_frana(token:str, id:str, body:dict):
-    """Modify a frana object by id."""
+def put_frana(token:str, id:str, body:dict) -> tuple[bool, dict]:
+    """Modify a frana object by id.
+    
+    Returns:
+        bool: True if no error occurred.
+        dict: The return object.
+    """
     if not id:
         raise Exception('No id given')
     response = requests.put(IdrogeoApiUrls().get_frana_api() + '/' + id, json=body, headers={
         'Authorization': 'Bearer ' + token
     })
 
-    if response.status_code != 200:
-        raise Exception(response.json())
+    return (response.status_code, response.json())
 
-def post_frana(token:str, body:dict):
-    """Add a new frana object."""
+def post_frana(token:str, body:dict) -> tuple[bool, dict]:
+    """Add a new frana object.
+    
+    Returns:
+        bool: True if no error occurred.
+        dict: The return object containing the new frana id.
+    """
     response = requests.post(IdrogeoApiUrls().get_frana_api(), json=body, headers={
         'Authorization': 'Bearer ' + token
     })
 
-    if response.status_code != 200 and response.status_code != 201:
-        raise Exception(response.json())
+    return (response.status_code, response.json())
     
-    return response.json()
-
+def frana_filter_post(token:str, select:List[str]=None, order:List[str]=None, limit:int=10, offset:int=0, search_args:dict=None) -> tuple[bool, dict]:
+    """Post to the frana filter api and return the response.
     
-def frana_filter_post(token:str, select:List[str]=None, order:List[str]=None, limit:int=10, offset:int=0, search_args:dict=None):
-    """Post to the frana filter api and return the response."""
+    Returns:
+        bool: True if no error occurred.
+        dict: The return object.
+    """
     params = {
         'limit': limit,
     }
@@ -154,10 +170,7 @@ def frana_filter_post(token:str, select:List[str]=None, order:List[str]=None, li
     })
     print(response)
 
-    if response.status_code != 200:
-        raise Exception(response.json())
-
-    return response.json()
+    return (response.status_code, response.json())
     
 def get_regions(token:str, only_id_and_name:bool=True):
     """Get all the regions."""
