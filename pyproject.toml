@@ -1,6 +1,6 @@
 [project]
 name = "pyidrogeo"
-version = "0.2.0"
+version = "0.2.1"
 description = "Idrogeo API Library."
 authors = [
     {name = "Andrea Antonello", email = "andrea.antonello@gmail.com"},
